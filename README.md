@@ -45,15 +45,6 @@ Using **Llama-3 (via Groq API)**, 19,000+ news articles were categorized. To han
 * `notebooks/` – Step-by-step research flow, t-test results and visualizations.
 * `results/` – Exported charts and tables showing drift stats and volume profiles.
 
----
-
-### How to use this project
-
-1. **Find Significant gaps:** Run the filtering scripts to identify stocks meeting the 6% price and 1x/2x volume thresholds.
-2. **Classify the news:** Run the LLM script to assign a catalyst based on the priority hierarchy.
-3. **Analyze the surprise:** Use the SUE/SUR scripts to calculate fundamental surprises and bucket the "Earnings gaps" into quartiles.
-4. **Run the svent study:** Use the notebooks to calculate CAR and run t-tests for the different news categories (Earnings vs. News vs. No-News).
-5. **Compare entry windows:** Analyze how results change depending on the entry time (+1m, +5m, or +30m after open).
 
 ---
 

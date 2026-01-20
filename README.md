@@ -1,4 +1,4 @@
-# Information shock analysis
+# Information shock analysis               WORK-IN-PROGRESS
 
 
 This project is a quantitative study of stock prices reaction to sudden information shocks. It specifically looks at **"Significant Gaps"** (price jumps >6% with higher than average pre-market volume) and tests whether the market underreacts to the news behind them.

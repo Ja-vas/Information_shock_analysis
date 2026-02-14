@@ -3,7 +3,7 @@
 
 This project is a quantitative study of stock prices reaction to sudden information shocks. It specifically looks at **"Significant Gaps"** (price jumps >6% with higher than average pre-market volume) and tests whether the market underreacts to the news behind them.
 
-Building on my previous work with **Post-Earnings Announcement Drift (PEAD)**, this version adds a LLM classifier to determine the "why" behind a price jump, thus allowing us to distinguish between 3 main categories: earnings and revenue surprises, informative firm-specific news, and "no-news" price shocks.
+Building on my previous work with **Post-Earnings Announcement Drift (PEAD)**, this version adds a LLM classifier to determine the "why" behind a price jump, allowing us to distinguish between 3 main categories: earnings and revenue surprises, informative firm-specific news, and "no-news" price shocks.
 
 
 

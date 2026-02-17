@@ -1,7 +1,7 @@
 # Information shock analysis               WORK-IN-PROGRESS
 
 
-This project is a quantitative study of stock prices reaction to sudden information shocks. It specifically looks at positive **significant gaps** (with higher than average pre-market volume) and tests whether the market underreacts to the news behind them.
+This project is a quantitative study of stock prices reaction to sudden information shocks. It specifically looks at **positive significant gaps** (with higher than average pre-market volume) and tests whether the market underreacts to the news behind them.
 
 Building on my previous work with **Post-Earnings Announcement Drift (PEAD)**, this version adds a LLM classifier to determine the "why" behind a price jump, allowing us to distinguish between 3 main categories: earnings and revenue surprises, informative firm-specific news, and "no-news" price shocks.
 
@@ -16,7 +16,7 @@ Building on my previous work with **Post-Earnings Announcement Drift (PEAD)**, t
 * Calculation and winsorizing of SUE (Earnings) and SUR (Revenue) by scaling surprises against an 8-quarter rolling standard deviation.
 
 **2. Identification of "Significant gaps"**
-* To isolate moves with real price shock, gaps are filtered by pre-market and early-session volume. A gap is "Significant" if:
+ To isolate moves with real price shock, gaps are filtered by pre-market and early-session volume. A gap is "Significant" if:
 * **The price jump is ≥ 6%**
 * **It has relative volume:** The dollar volume in the first 1 or 5 minutes exceeds the 30-day average daily volume, or exceeds 2x the average daily volume within the first 30 minutes.
 

@@ -47,8 +47,30 @@ Using **Llama-3 (via Groq API)**, 19,000+ news articles were categorized. To han
 
 
 ---
+###  Expected Data Format
+If you wish to run this pipeline using your own data providers, ensure your raw files are structured with the following columns before running the preprocessing scripts.
 
+**1. 1-Minute OHLCV Data + Daily data (Optional)**
+* `Timestamp` (format: YYYY-MM-DD HH:MM:SS)
+* `Open`, `High`, `Low`, `Close` (float)
+* `Volume` (int)
+* `Ticker` (string)
 
+**2. Earnings & Fundamentals**
+* `Ticker` (string)
+* `Earnings_Date` (format: YYYY-MM-DD)
+* `EPS` (float, actual reported earnings)
+* `Consensus` (float, expected earnings)
+* `Revenue` (float, actual reported revenue)
+* `Revenue_Consensus` (float, expected revenue)
+
+**3. News Headlines**
+* `Ticker` (string)
+* `Date` (format: YYYY-MM-DD HH:MM:SS)
+* `Headline` (string)
+* `Body` (string, optional but recommended for LLM classification)
+
+---
 ### Requirements
 *Python 3.9+ (tested on 3.12)  
 *pandas  

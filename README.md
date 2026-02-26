@@ -11,7 +11,7 @@ Building on my previous work with **Post-Earnings Announcement Drift (PEAD)**, t
 ### What’s in this repo?
 
 **1. Data pipeline & cleaning**
-* Scripts to process **16M+ rows** of daily OHLCV data and news text for ~10,000 US stocks.
+* Scripts to process **16M+ rows** of daily OHLCV data and news text for more than 6,000 US stocks.
 * Cleaning process: handling of stock splits, inactive stocks, liquidity filters and winsorizing outliers (0.01/99.99 percentiles) 
 * Calculation and winsorizing of SUE (Earnings) and SUR (Revenue) by scaling surprises against an 8-quarter rolling standard deviation.
 

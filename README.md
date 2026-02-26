@@ -1,4 +1,4 @@
-# Information shock analysis               WORK-IN-PROGRESS
+# Information shock analysis            
 
 
 This project is a quantitative study of stock prices reaction to sudden information shocks. It specifically looks at **positive significant gaps** (with higher than average pre-market volume) and tests whether the market underreacts to the news behind them.
@@ -48,27 +48,27 @@ Using **Llama-3 (via Groq API)**, 19,000+ news articles were categorized. To han
 
 ---
 ###  Expected Data Format
-If you wish to run this pipeline using your own data providers, ensure your raw files are structured with the following columns before running the preprocessing scripts.
+If you wish to run this pipeline using your own data providers, ensure your raw files are structured with the following columns before running the preprocessing scripts. Dummy datasets is located in `data/sample/`.
 
 **1. 1-Minute OHLCV Data + Daily data (Optional)**
 * `Timestamp` (format: YYYY-MM-DD HH:MM:SS)
-* `Open`, `High`, `Low`, `Close` (float)
-* `Volume` (int)
-* `Ticker` (string)
+* `Open`, `High`, `Low`, `Close` 
+* `Volume` 
+* `Ticker` 
 
 **2. Earnings & Fundamentals**
-* `Ticker` (string)
+* `Ticker` 
 * `Earnings_Date` (format: YYYY-MM-DD)
-* `EPS` (float, actual reported earnings)
-* `Consensus` (float, expected earnings)
-* `Revenue` (float, actual reported revenue)
-* `Revenue_Consensus` (float, expected revenue)
+* `EPS` 
+* `Consensus` 
+* `Revenue` 
+* `Revenue_Consensus` 
 
 **3. News Headlines**
-* `Ticker` (string)
+* `Ticker`
 * `Date` (format: YYYY-MM-DD HH:MM:SS)
-* `Headline` (string)
-* `Body` (string, optional but recommended for LLM classification)
+* `Headline` 
+* `Body` (optional but recommended for LLM classification)
 
 ---
 ### Requirements
@@ -81,4 +81,9 @@ If you wish to run this pipeline using your own data providers, ensure your raw 
 *requests (for APIs)  
 *groq (for LLM API)  
 *matplotlib/seaborn (for plots)
+
+
+---
+
+
 

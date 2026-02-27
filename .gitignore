@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.env
+
+# data directories + big csvs
+/data/
+/main_dataframe/
+/gap_trades_slices/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -36,21 +36,65 @@ Using **Llama-3 (via Groq API)**, 19,000+ news articles were categorized. To han
 
 ---
 
-## 📁 Repository Structure
+## How it all works
 
-* `data/` – Sample datasets and CSV exports (raw high-frequency data excluded).
-* `scripts/` – Core Python logic for cleaning, LLM API calls and CAR calculation.
-* `notebooks/` – Research workflow, summary statistics and figures.
-* `results/` – Exported charts and tables.
+**Before running any notebooks, edit `config.py`:**
 
-### Notebooks (Recommended Entry Points)
+### Data Pipeline (`01_main_workflow.ipynb`)
+- Load raw OHLCV data
+- Apply quality filters (liquidity, outliers)
+- Calculate standardized earning surprises (SUE, SUR)
+- Detect significant gaps (≥6% with volume confirmation)
+- Match gaps to earnings announcements
+- Output: `SIGNIFICANT_GAPS_final.csv`
 
-* **`01_main_workflow.ipynb`** – End-to-end data pipeline: gap detection, earnings matching, data cleaning and preparation
-* **`02_backtest_workflow.ipynb`** – Backtesting framework: strategy testing, CAR computation and empirical analysis
+### News Classification (Preprocessing)
+Before running analysis notebooks, classify news articles:
 
+**Step A: Download FNSPID News**
+```bash
+# Clone FNSPID dataset
+git clone https://github.com/Zdong104/FNSPID_Financial_News_Dataset.git
+# Extract news CSV and place in main_dataframe/
+```
+
+**Step B: Categorize News with Groq API**
+```python
+from scripts.groq_news_categorizer import main_categorize_news
+from config import MAIN_DIR
+
+input_file = MAIN_DIR / "raw_news.csv"  # FNSPID input
+output_file = MAIN_DIR / "news_classified.csv"
+main_categorize_news(input_file, output_file)
+```
+
+**Step C: Match News to Gaps**
+```python
+from scripts.news_gap_matcher import match_gaps_to_news_file
+from config import MAIN_DIR
+
+gaps_file = MAIN_DIR / "SIGNIFICANT_GAPS_final.csv"
+news_file = MAIN_DIR / "news_classified.csv"
+output_file = MAIN_DIR / "gaps_with_news.csv"
+match_gaps_to_news_file(gaps_file, news_file, output_file)
+```
+
+**Requirements:**
+- Groq API key (set as `GROQ_API_KEY` environment variable)
+- Install: `pip install groq`
+
+
+### CAR Quartiles & Categories (`04_analysis_car_and_categories.ipynb`)
+- Compute Cumulative Abnormal Returns across windows (+0d, +5d, +10d, +22d, +60d)
+- Assign each gap to news category using hierarchical priority
+- Run t-tests on returns by category and quarter
+- Visualize CAR profiles and significance
+
+### Backtesting (`02_backtest_workflow.ipynb`)
+- Design trading strategies based on gaps
+- Backtest across historical data
+- Measure performance: returns, Sharpe ratio, max drawdown
 ---
-
-## Expected Data Format
 
 If you wish to run this pipeline using your own data providers, ensure your raw files are structured with the following columns before running the preprocessing scripts. Dummy datasets is located in `data/sample/`.
 
@@ -91,5 +135,4 @@ If you wish to run this pipeline using your own data providers, ensure your raw 
 ---
 
 ## License
-
-Add your preferred license when setting up the remote repository.
+MIT

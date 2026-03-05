@@ -10,6 +10,8 @@ from pathlib import Path
 ROOT_DIR = Path(r"C:/Users/j/python/Shocks_analysis_project")  # <-- edit once
 # --------------------------------------------------------------------------
 
+SCRIPTS_DIR = ROOT_DIR / "scripts"
+
 DATA_DIR = ROOT_DIR / "data"
 DAILY_DATA_DIR = DATA_DIR / "daily_data"
 INTRADAY_DIR = DATA_DIR / "1min_data"
@@ -38,6 +40,15 @@ EARNINGS_OUTLIERS_FILE = MAIN_DIR / "earnings_outliers.csv"
 GAP_EARNINGS_JOINED_FILE = MAIN_DIR / "gap_earnings_joined.csv"
 GAP_EARNINGS_UP_FILE = MAIN_DIR / "gap_earnings_up.csv"
 GAP_EARNINGS_DOWN_FILE = MAIN_DIR / "gap_earnings_down.csv"
+
+# CAR results directory
+CAR_RESULTS_DIR = MAIN_DIR / "car_results"
+
+# CAR results files
+CAR_RAW_RESULTS_FILE = CAR_RESULTS_DIR / "CAR_raw_results.csv"
+CAR_EXTREME_AUDIT_FILE = CAR_RESULTS_DIR / "CAR_extreme_audit.csv"
+CAR_QUARTILES_RESULTS_FILE = CAR_RESULTS_DIR / "CAR_quartiles_results.csv"
+CAR_OUTLIERS_FILE = CAR_RESULTS_DIR / "CAR_outliers.csv"
 
 # convenient helpers --------------------------------------------------------
 def ensure_directories():

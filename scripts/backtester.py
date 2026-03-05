@@ -90,21 +90,25 @@ class ORBBacktester:
         return df
     
     def load_gap_trades(self) -> pd.DataFrame:
-        """Load gap trades filtered by significance."""
+        """Load gap trades filtered by significance and quartiles."""
         sig_file = MAIN_DIR / "SIGNIFICANT_GAPS_final.csv"
         df = pd.read_csv(sig_file, parse_dates=["Date"])
-        
+
         # Filter by significance level
         df = df[df[self.config.significance_filter] == True].copy()
-        
+
         # Filter by direction
         if self.config.entry_type == "gap_up":
             df = df[df["Type"] == "up"].copy()
         else:
             df = df[df["Type"] == "down"].copy()
-        
+
+        # Filter for Q3 and Q4 earnings for long-only strategy
+        if self.config.entry_type == "gap_up":
+            df = df[df["Quartile"].isin(["Q3", "Q4"])]
+
         print(f"Loaded {len(df)} gap trades (type={self.config.entry_type}, "
-              f"filter={self.config.significance_filter})")
+              f"filter={self.config.significance_filter}, quartiles=Q3/Q4)")
         return df
     
     def load_intraday_file(self, ticker: str, date_str: str) -> pd.DataFrame | None:

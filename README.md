@@ -32,7 +32,6 @@ Using **Llama-3 (via Groq API)**, 19,000+ news articles were categorized. To han
 **4. Empirical analysis**
 * **Cumulative abnormal returns (CAR):** Measuring price performance across T+0, T+5, T+10, T+22, and T+60 windows.
 * **Significance testing:** One-sample t-tests to determine if the CAR for specific news categories or surprise quartiles is statistically different from zero.
-* **Volume & gap profile:** Comparing how initial gap size and volume intensity correlate with subsequent drift or reversion.
 
 ---
 
@@ -84,15 +83,14 @@ match_gaps_to_news_file(gaps_file, news_file, output_file)
 - Install: `pip install groq`
 
 
-### CAR Quartiles & Categories (`04_analysis_car_and_categories.ipynb`)
+### CAR Quartiles & Categories (`02_car_analysis.ipynb`)
 - Compute Cumulative Abnormal Returns across windows (+0d, +5d, +10d, +22d, +60d)
-- Assign each gap to news category using hierarchical priority
-- Run t-tests on returns by category and quarter
+- Assign each earnigns gap to quartiles
+- Run t-tests on returns
 - Visualize CAR profiles and significance
 
-### Backtesting (`02_backtest_workflow.ipynb`)
+### Backtesting (`03_backtest_workflow.ipynb`)
 - Design trading strategies based on gaps
-- Backtest across historical data
 - Measure performance: returns, Sharpe ratio, max drawdown
 ---
 
